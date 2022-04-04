@@ -5,6 +5,9 @@
 :root{
     --positionX: 0px;
     --positionY: 0px;
+
+    --enemyX: 0px;
+    --enemyY: 0px;
 }
 
 .game{
@@ -20,6 +23,15 @@
     position: absolute;
     left: var(--positionX);
     top: var(--positionY);
+}
+
+.enemy{
+    height: 20px;
+    width: 20px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    left: var(--enemyX);
+    top: var(--enemyY);
 }
 
 .centro{
