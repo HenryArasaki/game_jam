@@ -14,7 +14,6 @@ setInterval(function(){
     angulo=angulo+velocidadeAngular
     if(angulo>=360){
         angulo=0}
-    console.log(raio)
 }, 1);
 
 
