@@ -1,6 +1,7 @@
 const root = document.querySelector(':root')
 const player = document.querySelector('.bird')
 const centro = document.querySelector('.centro')
+const info = document.querySelector('.info')
 
 const pi= Math.PI
 let centroX = 400
@@ -8,6 +9,7 @@ let centroY = 400
 let angulo = 0
 let raio = 150
 let velocidadeLinear = 30
+let inimigoVelocidade = 4
 
 centro.style.setProperty('--centroY',centroY+'px')
 // mover o boneco
@@ -18,6 +20,9 @@ setInterval(function(){
     angulo=angulo+velocidadeAngular
     if(angulo>=360){
         angulo=0}
+
+
+    info.innerHTML= `Raio: ${raio}<br>Velocidade${inimigoVelocidade}`
 }, 1);
 
 // spawnar os bixos
@@ -33,7 +38,7 @@ setInterval(function(){
 setInterval(function(){
     let enemys = document.querySelectorAll('.enemy')
     enemys.forEach(element=>{
-        element.style.setProperty('left',getComputedStyle(element).getPropertyValue('left').slice(0,-2)-4+'px')
+        element.style.setProperty('left',getComputedStyle(element).getPropertyValue('left').slice(0,-2)-inimigoVelocidade+'px')
         if(getComputedStyle(element).getPropertyValue('left').slice(0,-2) < 0){
             element.remove()
         }
@@ -57,12 +62,10 @@ document.addEventListener("keypress", e=>{
     if(e.key=='s' && raio>50){
         raio-=10
     }
-    if(e.key=='a'){
-        centroX-=5
-        centro.style.setProperty('--centroX',centroX+'px')
+    if(e.key=='a' && inimigoVelocidade>1){
+        inimigoVelocidade-=0.5
     }
-    if(e.key=='d'){
-        centroX+=5
-        centro.style.setProperty('--centroX',centroX+'px')
+    if(e.key=='d' && inimigoVelocidade<10){
+        inimigoVelocidade+=0.5
     }
 });

@@ -49,3 +49,8 @@
 h1,h2{
     color: white;
 }
+
+.info{
+    color: white;
+    right: 0;
+}
