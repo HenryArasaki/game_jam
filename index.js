@@ -9,8 +9,8 @@ let velocidadeLinear = 80
 
 setInterval(function(){ 
     let velocidadeAngular = velocidadeLinear/raio 
-    root.style.setProperty('--positionX',centroX+Math.cos(angulo*(pi/180))*raio+"px")
-    root.style.setProperty('--positionY',centroY+Math.sin(angulo*(pi/180))*raio+"px")
+    root.style.setProperty('--positionX',centroX+Math.cos(angulo*(pi/180))*raio-10+"px")
+    root.style.setProperty('--positionY',centroY+Math.sin(angulo*(pi/180))*raio-10+"px")
     angulo=angulo+velocidadeAngular
     if(angulo>=360){
         angulo=0}

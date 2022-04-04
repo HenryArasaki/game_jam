@@ -19,5 +19,14 @@
     background-color: brown;
     position: absolute;
     left: var(--positionX);
-    top: var(--positionY)
+    top: var(--positionY);
+}
+
+.centro{
+    left: 400px;
+    top:400px;
+    height: 4px;
+    width: 4px;
+    background-color: black;
+    position: absolute;
 }
