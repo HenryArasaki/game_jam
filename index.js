@@ -21,9 +21,9 @@ setInterval(function(){
 document.addEventListener("keypress", e=>{
 
     if(e.key=='w' && raio<350){
-        raio+=10
+        raio+=20
     }
     if(e.key=='s' && raio>50){
-        raio-=10
+        raio-=20
     }
 });
