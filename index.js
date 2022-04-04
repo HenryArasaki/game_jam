@@ -31,6 +31,9 @@ setInterval(function(){
     let enemys = document.querySelectorAll('.enemy')
     enemys.forEach(element=>{
         element.style.setProperty('left',getComputedStyle(element).getPropertyValue('left').slice(0,-2)-4+'px')
+        if(getComputedStyle(element).getPropertyValue('left').slice(0,-2) < 0){
+            element.remove()
+        }
     })
     // enemys.style.setProperty('--enemyX',)
 },10)
