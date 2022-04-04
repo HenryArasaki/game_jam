@@ -8,6 +8,9 @@
 
     --enemyX: 0px;
     --enemyY: 0px;
+    
+    --centroX: 0px;
+    --centroY: 0px;
 }
 
 .game{
@@ -35,8 +38,8 @@
 }
 
 .centro{
-    left: 400px;
-    top:400px;
+    left: var(--centroX);
+    top:var(--centroY);
     height: 4px;
     width: 4px;
     background-color: rgb(255, 255, 255);

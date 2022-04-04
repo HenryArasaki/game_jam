@@ -1,12 +1,15 @@
 const root = document.querySelector(':root')
+const player = document.querySelector('.bird')
+const centro = document.querySelector('.centro')
 
 const pi= Math.PI
 let centroX = 400
 let centroY = 400
 let angulo = 0
 let raio = 150
-let velocidadeLinear = 80
+let velocidadeLinear = 30
 
+centro.style.setProperty('--centroY',centroY+'px')
 // mover o boneco
 setInterval(function(){ 
     let velocidadeAngular = velocidadeLinear/raio 
@@ -38,6 +41,8 @@ setInterval(function(){
     // enemys.style.setProperty('--enemyX',)
 },10)
 
+
+
 // 40 740
 function randomNumber(min,max){
     return Math.random() * (max - min) + min;
@@ -47,9 +52,17 @@ function randomNumber(min,max){
 document.addEventListener("keypress", e=>{
 
     if(e.key=='w' && raio<350){
-        raio+=20
+        raio+=10
     }
     if(e.key=='s' && raio>50){
-        raio-=20
+        raio-=10
+    }
+    if(e.key=='a'){
+        centroX-=5
+        centro.style.setProperty('--centroX',centroX+'px')
+    }
+    if(e.key=='d'){
+        centroX+=5
+        centro.style.setProperty('--centroX',centroX+'px')
     }
 });
