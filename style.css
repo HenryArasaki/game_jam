@@ -10,13 +10,13 @@
 .game{
     height: 100vh;
     width: 100vw;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(0, 0, 0);
 }
 
 .bird{
     height: 20px;
     width: 20px;
-    background-color: brown;
+    background-color: rgb(255, 255, 255);
     position: absolute;
     left: var(--positionX);
     top: var(--positionY);
@@ -27,6 +27,10 @@
     top:400px;
     height: 4px;
     width: 4px;
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     position: absolute;
+}
+
+h1,h2{
+    color: white;
 }
