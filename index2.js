@@ -9,21 +9,16 @@ let centroX = 400
 let centroY = 400
 let angulo = 0
 let raio = 150
-
+let velocidadeLinear = 70
+let inimigoVelocidade = 4
 
 centro.style.setProperty('--centroY', centroY + 'px')
-centro.style.setProperty('--centroX', centroX + 'px')
 // mover o boneco
 
-game()
+restart()
 
-function game() {
-
-    let velocidadeLinear = 70
-    let inimigoVelocidade = 4
-    let score = 0
-
-    const movePlayer = setInterval(function () {
+function movePlayer() {
+    setInterval(function () {
         let velocidadeAngular = velocidadeLinear / raio
         root.style.setProperty('--positionX', centroX + Math.cos(angulo * (pi / 180)) * raio - 10 + "px")
         root.style.setProperty('--positionY', centroY + Math.sin(angulo * (pi / 180)) * raio - 10 + "px")
@@ -32,53 +27,53 @@ function game() {
             angulo = 0
         }
 
+        info.innerHTML = `Raio: ${raio}<br>Velocidade${inimigoVelocidade}`
     }, 1);
+}
 
-
-    const spawn = setInterval(function () {
+// spawnar os bixos
+function spawn() {
+    setInterval(function () {
         const enemy = document.createElement('div')
         enemy.classList.add('enemy')
         enemy.style.setProperty('--enemyX', '1400px')
         enemy.style.setProperty('--enemyY', randomNumber(40, 740) + 'px')
         root.append(enemy)
     }, 400)
+}
 
-    const moveEnemy = setInterval(function () {
+// move os bixos
+function moveEnemy() {
+    setInterval(function () {
         let enemys = document.querySelectorAll('.enemy')
         enemys.forEach(element => {
             element.style.setProperty('left', getComputedStyle(element).getPropertyValue('left').slice(0, -2) - inimigoVelocidade + 'px')
-            if (Math.abs(getComputedStyle(element).getPropertyValue('left').slice(0, -2) - getComputedStyle(root).getPropertyValue('--positionX').slice(0, -2)) <= 10 && Math.abs(getComputedStyle(element).getPropertyValue('top').slice(0, -2) - getComputedStyle(root).getPropertyValue('--positionY').slice(0, -2)) <= 10) {
+            if (Math.abs(getComputedStyle(element).getPropertyValue('left').slice(0, -2) - getComputedStyle(root).getPropertyValue('--positionX').slice(0, -2)) <= 6 && Math.abs(getComputedStyle(element).getPropertyValue('top').slice(0, -2) - getComputedStyle(root).getPropertyValue('--positionY').slice(0, -2)) <= 6) {
                 gameOver()
             }
             if (getComputedStyle(element).getPropertyValue('left').slice(0, -2) < 0) {
                 element.remove()
             }
         })
+        // enemys.style.setProperty('--enemyX',)
     }, 10)
-
-    const increasePoints = setInterval(function(){
-        score++
-        info.innerHTML=score
-    },500)
-
-
-    function gameOver() {
-        clearInterval(movePlayer)
-        clearInterval(spawn)
-        clearInterval(moveEnemy)
-        clearInterval(increasePoints)
-        btn.style.setProperty('display', 'block')
-    }
-
 }
 
+function gameOver() {
+    clearInterval(movePlayer)
+    clearInterval(spawn)
+    clearInterval(moveEnemy)
+    btn.style.setProperty('display', 'block')
+}
 
 function restart() {
     let enemys = document.querySelectorAll('.enemy')
     enemys.forEach(element => {
         element.remove()
     })
-    game()
+    movePlayer()
+    moveEnemy()
+    spawn()
     btn.style.setProperty('display', 'none')
 }
 

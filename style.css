@@ -53,4 +53,16 @@ h1,h2{
 .info{
     color: white;
     right: 0;
+    font-size: 30px;
+    display: table;
+    font-weight: bold;
+}
+
+.btn{
+    display: none;
+    border: none;
+    background-color: white;
+    color: black;
+    font-size: 30px;
+    padding: 10px;
 }
