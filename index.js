@@ -22,6 +22,7 @@ function game() {
     let velocidadeLinear = 70
     let inimigoVelocidade = 4
     let score = 0
+    let spawnRate = 400
 
     const movePlayer = setInterval(function () {
         let velocidadeAngular = velocidadeLinear / raio
@@ -38,10 +39,10 @@ function game() {
     const spawn = setInterval(function () {
         const enemy = document.createElement('div')
         enemy.classList.add('enemy')
-        enemy.style.setProperty('--enemyX', '1400px')
+        enemy.style.setProperty('--enemyX', '1800px')
         enemy.style.setProperty('--enemyY', randomNumber(40, 740) + 'px')
         root.append(enemy)
-    }, 400)
+    }, spawnRate)
 
     const moveEnemy = setInterval(function () {
         let enemys = document.querySelectorAll('.enemy')
@@ -59,6 +60,18 @@ function game() {
     const increasePoints = setInterval(function(){
         score++
         info.innerHTML=score
+        if(score>=50){
+            inimigoVelocidade+=0.5
+        }
+        if(score>=100){
+            spawnRate-=50
+        }
+        if(score>=150){
+            spawnRate-=20
+        }
+        if(score>=300){
+            spawnRate-=20
+        }
     },500)
 
 
